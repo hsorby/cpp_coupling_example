@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model name="Parameters" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <import xlink:href="cpp_coupling_units.cellml">
+        <units name="Js_per_m6" units_ref="Js_per_m6"/>
+        <units name="m6_per_J" units_ref="m6_per_J"/>
+        <units name="J_per_m3" units_ref="J_per_m3"/>
+        <units name="Js2_per_m6" units_ref="Js2_per_m6"/>
+        <units name="m3_per_s" units_ref="m3_per_s"/>
+        <units name="Js2_per_m5" units_ref="Js2_per_m5"/>
+    </import>
+    <component name="parameters_global"/>
+    <component name="parameters">
+        <variable initial_value="1e6" name="R_main_vessel" public_interface="out" units="Js_per_m6"/>
+        <variable initial_value="1e-8" name="C_main_vessel" public_interface="out" units="m6_per_J"/>
+        <variable initial_value="0.0" name="u_ext_main_vessel" public_interface="out" units="J_per_m3"/>
+        <variable initial_value="1e-6" name="I_main_vessel" public_interface="out" units="Js2_per_m6"/>
+        <variable initial_value="10" name="u_out_main_vessel" public_interface="out" units="J_per_m3"/>
+        <variable initial_value="1e-5" name="v_in_main_vessel" public_interface="out" units="m3_per_s"/>
+    </component>
+</model>

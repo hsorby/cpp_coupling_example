@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model name="CardiovascularSystem" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <import xlink:href="cpp_coupling_units.cellml">
+        <units name="m2" units_ref="m2"/>
+        <units name="m3" units_ref="m3"/>
+        <units name="m3_per_s" units_ref="m3_per_s"/>
+        <units name="m_per_s2" units_ref="m_per_s2"/>
+        <units name="m_per_s" units_ref="m_per_s"/>
+        <units name="m6_per_J" units_ref="m6_per_J"/>
+        <units name="m6_per_Js" units_ref="m6_per_Js"/>
+        <units name="per_m" units_ref="per_m"/>
+        <units name="per_s" units_ref="per_s"/>
+        <units name="J_per_m3" units_ref="J_per_m3"/>
+        <units name="J_per_m3s" units_ref="J_per_m3s"/>
+        <units name="m3_per_J" units_ref="m3_per_J"/>
+        <units name="J2_per_m6" units_ref="J2_per_m6"/>
+        <units name="Js_per_m6" units_ref="Js_per_m6"/>
+        <units name="Js2_per_m6" units_ref="Js2_per_m6"/>
+        <units name="Js2_per_m5" units_ref="Js2_per_m5"/>
+        <units name="J_per_s" units_ref="J_per_s"/>
+        <units name="J_per_m6" units_ref="J_per_m6"/>
+        <units name="Js_per_m3" units_ref="Js_per_m3"/>
+        <units name="UnitValve" units_ref="UnitValve"/>
+        <units name="J_per_m9" units_ref="J_per_m9"/>
+        <units name="m3_per_Js" units_ref="m3_per_Js"/>
+        <units name="kg_per_m3" units_ref="kg_per_m3"/>
+        <units name="m3_per_kg" units_ref="m3_per_kg"/>
+    </import>
+    <import xlink:href="cpp_coupling_parameters.cellml">
+        <component component_ref="parameters" name="parameters"/>
+        <component component_ref="parameters_global" name="parameters_global"/>
+    </import>
+    <component name="environment">
+        <variable name="time" public_interface="out" units="second"/>
+    </component>
+    <import xlink:href="cpp_coupling_modules.cellml">
+        <component component_ref="vp_simple_type" name="main_vessel_module"/>
+    </import>
+    <component name="main_vessel">
+        <variable name="u" public_interface="in" units="J_per_m3"/>
+        <variable name="v" public_interface="in" units="m3_per_s"/>
+        <variable name="q_C" public_interface="in" units="m3"/>
+        <variable name="R" public_interface="in" units="Js_per_m6"/>
+        <variable name="C" public_interface="in" units="m6_per_J"/>
+        <variable name="u_ext" public_interface="in" units="J_per_m3"/>
+        <variable name="I" public_interface="in" units="Js2_per_m6"/>
+        <variable name="u_out" public_interface="in" units="J_per_m3"/>
+        <variable name="v_in" public_interface="in" units="m3_per_s"/>
+    </component>
+    <connection>
+        <map_components component_1="main_vessel" component_2="main_vessel_module"/>
+        <map_variables variable_1="u" variable_2="u"/>
+        <map_variables variable_1="v" variable_2="v"/>
+        <map_variables variable_1="q_C" variable_2="q_C"/>
+        <map_variables variable_1="R" variable_2="R"/>
+        <map_variables variable_1="C" variable_2="C"/>
+        <map_variables variable_1="u_ext" variable_2="u_ext"/>
+        <map_variables variable_1="I" variable_2="I"/>
+        <map_variables variable_1="u_out" variable_2="u_out"/>
+        <map_variables variable_1="v_in" variable_2="v_in"/>
+    </connection>
+    <connection>
+        <map_components component_1="parameters" component_2="main_vessel_module"/>
+        <map_variables variable_1="R_main_vessel" variable_2="R"/>
+        <map_variables variable_1="C_main_vessel" variable_2="C"/>
+        <map_variables variable_1="u_ext_main_vessel" variable_2="u_ext"/>
+        <map_variables variable_1="I_main_vessel" variable_2="I"/>
+        <map_variables variable_1="u_out_main_vessel" variable_2="u_out"/>
+        <map_variables variable_1="v_in_main_vessel" variable_2="v_in"/>
+    </connection>
+    <connection>
+        <map_components component_1="environment" component_2="main_vessel_module"/>
+        <map_variables variable_1="time" variable_2="t"/>
+    </connection>
+</model>
